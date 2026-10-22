@@ -8,8 +8,8 @@ from flask import Flask, request, jsonify  # For creating the Flask API
 # Initialize Flask app with a name
 superkart_api = Flask("SuperKart")
 
-# Load the trained model
-model = joblib.load("superkart_model.joblib")
+# Load the trained model - corrected model filename to match saved model
+model = joblib.load("xgb_tuned_model.joblib")
 
 # Define a route for the home page
 @superkart_api.get('/')
@@ -61,7 +61,6 @@ def predict_sales_batch():
     output_dict = {str(i): round(pred, 2) for i, pred in enumerate(predictions)}
 
     return output_dict
-
 
 # Run the Flask app in debug mode
 if __name__ == '__main__':
